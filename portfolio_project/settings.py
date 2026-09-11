@@ -19,7 +19,8 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-default-dev-key-change-in-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 't')
 
-ALLOWED_HOSTS = [host.strip() for host in os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1,*').split(',') if host.strip()]
+ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ["https://*.run.app"]
 
 # Application definition
 INSTALLED_APPS = [
@@ -64,14 +65,20 @@ TEMPLATES = [
 WSGI_APPLICATION = 'portfolio_project.wsgi.application'
 
 # Database Configuration: Google Cloud SQL (MySQL)
+# Handles both local TCP host (34.100.184.249) and Cloud Run Unix socket (/cloudsql/<CONNECTION_NAME>)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME', 'Portfoliodb'),
-        'USER': os.getenv('DB_USER', 'root'),
-        'PASSWORD': os.getenv('DB_PASSWORD', 'AppEtite123!'),
-        'HOST': os.getenv('DB_HOST', '34.100.184.249'),
-        'PORT': os.getenv('DB_PORT', '3306'),
+        'NAME': os.environ.get('DB_NAME', 'Portfoliodb'),
+        'USER': os.environ.get('DB_USER', 'root'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'AppEtite123!'),
+        'HOST': os.environ.get(
+            'DB_HOST',
+            f"/cloudsql/{os.environ.get('CLOUD_SQL_CONNECTION_NAME')}"
+            if os.environ.get('CLOUD_SQL_CONNECTION_NAME')
+            else '34.100.184.249'
+        ),
+        'PORT': os.environ.get('DB_PORT', '3306'),
         'OPTIONS': {
             'charset': 'utf8mb4',
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
