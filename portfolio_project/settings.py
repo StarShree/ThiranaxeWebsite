@@ -24,6 +24,8 @@ CSRF_TRUSTED_ORIGINS = [
     "https://*.run.app",
     "https://*.netlify.app",
     "http://*.netlify.app",
+    "https://*.onrender.com",
+    "https://*.koyeb.app",
 ]
 
 # Application definition
