@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ShriramPortfolio | {{ profile.full_name }}{% endblock %}</title>
+    
+    <!-- Meta SEO -->
+    <meta name="description" content="Personal portfolio of {{ profile.full_name }} - {{ profile.tagline }}.">
+    <meta name="keywords" content="Portfolio, Shriram S, Python, Cloud Computing, Unity Game Dev, Ecommerce Responsive Design, Thiranex, Easwari Engineering College, IITM BS Degree">
+    <meta name="author" content="{{ profile.full_name }}">
+
+    <!-- Google Fonts: Outfit, Inter, JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="dark-theme">
+    <!-- Background Ambient Glow Effects -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+    <div class="ambient-glow glow-3"></div>
+
+    <!-- Navigation Header -->
+    <header class="site-header" id="navbar">
+        <div class="container nav-container">
+            <a href="#hero" class="brand-logo">
+                <span class="logo-bracket">&lt;</span><span class="logo-text">ShriramPortfolio</span><span class="logo-bracket"> /&gt;</span>
+            </a>
+
+            <!-- Desktop Nav Menu -->
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#about" class="nav-link"><i class="fa-regular fa-user"></i> About</a>
+                <a href="#skills" class="nav-link"><i class="fa-solid fa-code"></i> Skills</a>
+                <a href="#projects" class="nav-link"><i class="fa-solid fa-laptop-code"></i> Projects</a>
+                <a href="#experience" class="nav-link"><i class="fa-solid fa-briefcase"></i> Experience</a>
+                <a href="#contact" class="nav-link nav-cta"><i class="fa-regular fa-paper-plane"></i> Contact</a>
+                <!-- Admin Panel Button in Navbar -->
+                <a href="{% url 'admin:index' %}" target="_blank" rel="noopener" class="nav-admin-btn" id="nav-admin-btn">
+                    <i class="fa-solid fa-gauge-high"></i> Admin Panel
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Body Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <span class="logo-bracket">&lt;</span>ShriramPortfolio<span class="logo-bracket"> /&gt;</span>
+                </div>
+                <p class="footer-desc">{{ profile.tagline }}</p>
+                <p class="footer-subtext"><i class="fa-solid fa-bolt"></i> Passionate about Python, Cloud Computing, Unity Game Dev & Responsive Web Design.</p>
+            </div>
+            
+            <div class="footer-links">
+                {% if profile.github_url %}
+                <a href="{{ profile.github_url }}" target="_blank" rel="noopener" class="footer-social" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                {% endif %}
+                {% if profile.linkedin_url %}
+                <a href="{{ profile.linkedin_url }}" target="_blank" rel="noopener" class="footer-social" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                {% endif %}
+                {% if profile.twitter_url %}
+                <a href="{{ profile.twitter_url }}" target="_blank" rel="noopener" class="footer-social" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                {% endif %}
+                <a href="mailto:{{ profile.email }}" class="footer-social" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container footer-bottom-flex">
+                <p>&copy; {% now "Y" %} {{ profile.full_name }} | ShriramPortfolio. All Rights Reserved.</p>
+                <a href="{% url 'admin:index' %}" target="_blank" rel="noopener" class="footer-admin-link">
+                    <i class="fa-solid fa-lock"></i> Admin Portal
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

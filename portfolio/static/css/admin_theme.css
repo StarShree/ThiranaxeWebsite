@@ -1,0 +1,429 @@
+/* ==========================================================================
+   SHRIRAMPORTFOLIO DJANGO ADMIN THEME
+   Modern Cyber/Dark Glassmorphic UI matching Portfolio Aesthetic
+   ========================================================================== */
+
+:root {
+    --admin-bg-dark: #0A0E17;
+    --admin-bg-secondary: #111827;
+    --admin-bg-card: rgba(17, 24, 39, 0.85);
+    --admin-bg-input: rgba(255, 255, 255, 0.05);
+
+    --admin-border-subtle: rgba(255, 255, 255, 0.08);
+    --admin-border-accent: rgba(99, 102, 241, 0.35);
+
+    --admin-text-primary: #F9FAFB;
+    --admin-text-secondary: #94A3B8;
+    --admin-text-muted: #64748B;
+
+    --admin-cyan: #06B6D4;
+    --admin-indigo: #6366F1;
+    --admin-violet: #8B5CF6;
+    --admin-emerald: #10B981;
+    --admin-rose: #F43F5E;
+
+    --admin-gradient: linear-gradient(135deg, #06B6D4 0%, #6366F1 50%, #8B5CF6 100%);
+    --admin-gradient-glow: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.15), transparent 70%);
+
+    --admin-font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    --admin-font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --admin-font-mono: 'JetBrains Mono', monospace;
+
+    --admin-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    --admin-radius: 12px;
+}
+
+/* Base resets & theme override */
+body {
+    background-color: var(--admin-bg-dark) !important;
+    color: var(--admin-text-primary) !important;
+    font-family: var(--admin-font-body) !important;
+    margin: 0;
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--admin-font-heading) !important;
+    color: var(--admin-text-primary) !important;
+    font-weight: 700 !important;
+}
+
+a {
+    color: var(--admin-cyan) !important;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #38BDF8 !important;
+}
+
+/* ==================== HEADER & BRANDING ==================== */
+#header {
+    background: rgba(10, 14, 23, 0.95) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--admin-border-subtle) !important;
+    padding: 16px 32px !important;
+    color: #FFFFFF !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.admin-branding-box {
+    display: flex;
+    align-items: center;
+}
+
+.admin-brand-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none !important;
+}
+
+.brand-bracket {
+    font-family: var(--admin-font-mono);
+    color: var(--admin-cyan) !important;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.brand-name {
+    font-family: var(--admin-font-heading);
+    font-size: 1.35rem;
+    font-weight: 800;
+    background: var(--admin-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.02em;
+}
+
+.brand-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(99, 102, 241, 0.35);
+    color: #A5B4FC !important;
+    font-size: 0.76rem;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    font-family: var(--admin-font-heading);
+    font-weight: 600;
+}
+
+#user-tools {
+    font-size: 0.88rem !important;
+    color: var(--admin-text-secondary) !important;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+#user-tools a {
+    color: var(--admin-text-primary) !important;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px 14px;
+    border-radius: 9999px;
+    border: 1px solid var(--admin-border-subtle);
+}
+
+#user-tools a:hover {
+    background: var(--admin-indigo);
+    color: #FFFFFF !important;
+    border-color: transparent;
+}
+
+/* ==================== BREADCRUMBS ==================== */
+div.breadcrumbs {
+    background: rgba(17, 24, 39, 0.6) !important;
+    border-bottom: 1px solid var(--admin-border-subtle) !important;
+    padding: 12px 32px !important;
+    font-size: 0.85rem !important;
+    color: var(--admin-text-muted) !important;
+}
+
+div.breadcrumbs a {
+    color: var(--admin-text-secondary) !important;
+}
+
+div.breadcrumbs a:hover {
+    color: var(--admin-cyan) !important;
+}
+
+/* ==================== MAIN CONTENT CONTAINER ==================== */
+#content {
+    padding: 32px !important;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+#content-main {
+    float: none !important;
+}
+
+/* ==================== DASHBOARD MODULES ==================== */
+.module {
+    background: var(--admin-bg-card) !important;
+    border: 1px solid var(--admin-border-subtle) !important;
+    border-radius: var(--admin-radius) !important;
+    backdrop-filter: blur(14px);
+    box-shadow: var(--admin-shadow) !important;
+    margin-bottom: 28px !important;
+    overflow: hidden !important;
+}
+
+.module h2, .module caption {
+    background: rgba(255, 255, 255, 0.03) !important;
+    color: #FFFFFF !important;
+    font-family: var(--admin-font-heading) !important;
+    font-size: 1.15rem !important;
+    padding: 14px 22px !important;
+    border-bottom: 1px solid var(--admin-border-subtle) !important;
+    letter-spacing: -0.01em;
+}
+
+.module caption a {
+    color: #FFFFFF !important;
+}
+
+/* Tables */
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    color: var(--admin-text-primary) !important;
+}
+
+thead th {
+    background: rgba(255, 255, 255, 0.02) !important;
+    color: var(--admin-text-secondary) !important;
+    font-family: var(--admin-font-heading) !important;
+    font-size: 0.8rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    padding: 12px 18px !important;
+    border-bottom: 1px solid var(--admin-border-subtle) !important;
+    border-top: none !important;
+}
+
+tbody tr {
+    background: transparent !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+    transition: background 0.15s ease;
+}
+
+tbody tr:hover {
+    background: rgba(99, 102, 241, 0.08) !important;
+}
+
+tbody td, tbody th {
+    padding: 14px 18px !important;
+    font-size: 0.92rem !important;
+    border-top: none !important;
+    color: var(--admin-text-primary) !important;
+}
+
+/* Action Links inside Tables */
+td a.addlink, td a.changelink {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem !important;
+    font-weight: 500;
+}
+
+td a.addlink {
+    background: rgba(16, 185, 129, 0.12) !important;
+    color: var(--admin-emerald) !important;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+td a.changelink {
+    background: rgba(6, 182, 212, 0.12) !important;
+    color: var(--admin-cyan) !important;
+    border: 1px solid rgba(6, 182, 212, 0.3);
+}
+
+/* ==================== BUTTONS & CONTROLS ==================== */
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background: var(--admin-gradient) !important;
+    color: #FFFFFF !important;
+    font-family: var(--admin-font-heading) !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    padding: 10px 22px !important;
+    border-radius: 9999px !important;
+    border: none !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 16px rgba(99, 102, 241, 0.35) !important;
+    transition: all 0.2s ease !important;
+    text-transform: none !important;
+}
+
+.button:hover, input[type=submit]:hover, .submit-row input:hover, a.button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 22px rgba(99, 102, 241, 0.5) !important;
+}
+
+.button.default, input[type=submit].default, .submit-row input.default {
+    background: var(--admin-gradient) !important;
+}
+
+.deletelink {
+    background: rgba(244, 63, 94, 0.15) !important;
+    color: var(--admin-rose) !important;
+    border: 1px solid rgba(244, 63, 94, 0.3) !important;
+    padding: 8px 18px !important;
+    border-radius: 9999px !important;
+}
+
+.deletelink:hover {
+    background: var(--admin-rose) !important;
+    color: #FFFFFF !important;
+}
+
+/* ==================== FORMS & INPUTS ==================== */
+input[type=text], input[type=password], input[type=email], input[type=url],
+input[type=number], textarea, select {
+    background: var(--admin-bg-input) !important;
+    border: 1px solid var(--admin-border-subtle) !important;
+    border-radius: 8px !important;
+    padding: 10px 14px !important;
+    color: var(--admin-text-primary) !important;
+    font-family: var(--admin-font-body) !important;
+    font-size: 0.92rem !important;
+    outline: none !important;
+    transition: all 0.2s ease !important;
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus,
+input[type=url]:focus, input[type=number]:focus, textarea:focus, select:focus {
+    border-color: var(--admin-indigo) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25) !important;
+}
+
+fieldset {
+    background: var(--admin-bg-card) !important;
+    border: 1px solid var(--admin-border-subtle) !important;
+    border-radius: var(--admin-radius) !important;
+    padding: 24px !important;
+    margin-bottom: 24px !important;
+}
+
+fieldset h2 {
+    color: var(--admin-cyan) !important;
+    font-size: 1.2rem !important;
+    border-bottom: 1px solid var(--admin-border-subtle) !important;
+    padding-bottom: 12px !important;
+    margin-bottom: 18px !important;
+}
+
+.form-row {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+    padding: 14px 0 !important;
+}
+
+label {
+    color: var(--admin-text-secondary) !important;
+    font-weight: 500 !important;
+    font-size: 0.9rem !important;
+}
+
+.help {
+    color: var(--admin-text-muted) !important;
+    font-size: 0.8rem !important;
+}
+
+/* ==================== CHANGELIST & FILTERS ==================== */
+#changelist {
+    background: transparent !important;
+}
+
+#changelist-filter {
+    background: var(--admin-bg-card) !important;
+    border: 1px solid var(--admin-border-subtle) !important;
+    border-radius: var(--admin-radius) !important;
+    padding: 20px !important;
+}
+
+#changelist-filter h2 {
+    background: transparent !important;
+    color: var(--admin-cyan) !important;
+    font-size: 1rem !important;
+    padding: 0 0 12px !important;
+    border-bottom: 1px solid var(--admin-border-subtle) !important;
+}
+
+#changelist-filter h3 {
+    color: var(--admin-text-secondary) !important;
+    font-size: 0.85rem !important;
+    margin-top: 14px !important;
+}
+
+#changelist-filter li.selected a {
+    color: var(--admin-cyan) !important;
+    font-weight: 600;
+}
+
+/* Search bar */
+#toolbar {
+    background: var(--admin-bg-card) !important;
+    border: 1px solid var(--admin-border-subtle) !important;
+    border-radius: var(--admin-radius) !important;
+    padding: 16px 20px !important;
+    margin-bottom: 20px !important;
+}
+
+#searchbar {
+    width: 320px !important;
+    border-radius: 9999px !important;
+}
+
+/* ==================== LOGIN PAGE ==================== */
+body.login {
+    background: radial-gradient(circle at 50% 20%, rgba(99, 102, 241, 0.15), transparent 60%),
+                var(--admin-bg-dark) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.login #container {
+    width: 100% !important;
+    max-width: 440px !important;
+    margin: 40px auto !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+body.login #header {
+    background: transparent !important;
+    border: none !important;
+    justify-content: center !important;
+    padding: 0 0 24px !important;
+}
+
+body.login #content {
+    background: var(--admin-bg-card) !important;
+    border: 1px solid var(--admin-border-accent) !important;
+    border-radius: var(--admin-radius) !important;
+    padding: 36px 32px !important;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6) !important;
+    backdrop-filter: blur(20px);
+}
+
+body.login .submit-row {
+    padding: 16px 0 0 !important;
+    margin: 0 !important;
+    text-align: center !important;
+}
+
+body.login .submit-row input {
+    width: 100% !important;
+    padding: 12px !important;
+    font-size: 1rem !important;
+}

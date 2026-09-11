@@ -1,0 +1,494 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- ==================== HERO SECTION ==================== -->
+<section id="hero" class="hero-section">
+    <div class="container hero-container">
+        <div class="hero-content">
+            <div class="availability-badge">
+                <span class="status-indicator"></span>
+                <span>Intern at Thiranex &bull; Python, Cloud & Game Dev</span>
+            </div>
+
+            <h1 class="hero-title">
+                Hi, I'm <span class="gradient-text">{{ profile.full_name }}</span>
+            </h1>
+
+            <h2 class="hero-subtitle">
+                <span class="typewriter-text">{{ profile.tagline }}</span>
+            </h2>
+
+            <p class="hero-description">
+                {{ profile.bio }}
+            </p>
+
+            <div class="hero-actions">
+                <a href="#projects" class="btn btn-primary" id="hero-btn-projects">
+                    <i class="fa-solid fa-layer-group"></i> Explore Projects
+                </a>
+                <a href="#experience" class="btn btn-outline" id="hero-btn-experience">
+                    <i class="fa-solid fa-briefcase"></i> Experience & Education
+                </a>
+                <a href="#contact" class="btn btn-ghost" id="hero-btn-contact">
+                    <i class="fa-regular fa-paper-plane"></i> Contact Me
+                </a>
+                <!-- Direct Admin Panel Button on Homepage -->
+                <a href="{% url 'admin:index' %}" target="_blank" rel="noopener" class="btn btn-admin" id="hero-btn-admin">
+                    <i class="fa-solid fa-gauge-high"></i> Admin Panel
+                </a>
+            </div>
+
+            <div class="hero-socials">
+                <span class="socials-label">Connect:</span>
+                {% if profile.github_url %}
+                <a href="{{ profile.github_url }}" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                {% endif %}
+                {% if profile.linkedin_url %}
+                <a href="{{ profile.linkedin_url }}" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                {% endif %}
+                <a href="mailto:{{ profile.email }}" class="social-icon" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                <a href="tel:{{ profile.phone }}" class="social-icon" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="code-card-wrapper">
+                <div class="code-card-glow"></div>
+                <div class="code-card">
+                    <div class="code-card-header">
+                        <div class="terminal-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <span class="terminal-title">shriram_profile.py</span>
+                        <div class="terminal-badge"><i class="fa-brands fa-python"></i> Python 3.14</div>
+                    </div>
+                    <div class="code-card-body">
+                        <pre><code><span class="c-keyword">class</span> <span class="c-class">SoftwareEngineer</span>:
+    <span class="c-prop">name</span> = <span class="c-str">"Shriram S"</span>
+    <span class="c-prop">internship</span> = <span class="c-str">"Thiranex"</span>
+    <span class="c-prop">email</span> = <span class="c-str">"s.shriramsivakumaran@gmail.com"</span>
+    <span class="c-prop">phone</span> = <span class="c-str">"9994949819"</span>
+    
+    <span class="c-keyword">def</span> <span class="c-func">core_specialties</span>(self):
+        <span class="c-keyword">return</span> [
+            <span class="c-str">"Python & Cloud Computing"</span>,
+            <span class="c-str">"Ecommerce Responsive Design"</span>,
+            <span class="c-str">"Unity Game Dev (C#)"</span>
+        ]
+
+    <span class="c-keyword">def</span> <span class="c-func">education_path</span>(self):
+        <span class="c-keyword">return</span> [
+            <span class="c-str">"Easwari Engg College (CSE)"</span>,
+            <span class="c-str">"IIT Madras (BS Degree)"</span>,
+            <span class="c-str">"Apex Pon Vidyashram"</span>
+        ]</code></pre>
+                    </div>
+
+                    <!-- Floating Tech Badges -->
+                    <div class="floating-badge badge-django">
+                        <i class="fa-brands fa-python"></i>
+                        <span>Python & Cloud</span>
+                    </div>
+                    <div class="floating-badge badge-mysql">
+                        <i class="fa-solid fa-gamepad"></i>
+                        <span>Unity Game Dev</span>
+                    </div>
+                    <div class="floating-badge badge-react">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span>Ecommerce UI</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="stats-section">
+        <div class="container stats-grid">
+            <div class="stat-card">
+                <div class="stat-number highlight-cloud"><i class="fa-brands fa-python"></i> Python</div>
+                <div class="stat-label">Core Specialization</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number highlight-cloud"><i class="fa-solid fa-cloud"></i> Cloud</div>
+                <div class="stat-label">Cloud Architecture</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number"><i class="fa-solid fa-gamepad"></i> Unity & Web</div>
+                <div class="stat-label">Game Dev & Ecommerce</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number"><i class="fa-solid fa-building-user"></i> Thiranex</div>
+                <div class="stat-label">Current Internship</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== ABOUT SECTION ==================== -->
+<section id="about" class="section about-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag"><i class="fa-regular fa-id-badge"></i> Background</span>
+            <h2 class="section-title">About <span class="gradient-text">{{ profile.full_name }}</span></h2>
+            <p class="section-subtitle">A versatile developer uniting Python engineering, Cloud Computing, Unity Game Development, and Ecommerce Web Design.</p>
+        </div>
+
+        <div class="about-grid">
+            <div class="about-text-card">
+                <h3 class="about-heading">Engineering Digital Systems Across Domains</h3>
+                <p class="about-paragraph">{{ profile.about_details }}</p>
+                
+                <div class="features-list">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fa-brands fa-python"></i></div>
+                        <div>
+                            <h4>Well Versed with Python</h4>
+                            <p>Deep expertise in Python programming, object-oriented design, script automation, and scalable Django backend systems.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fa-solid fa-cloud"></i></div>
+                        <div>
+                            <h4>Well Versed in Cloud Computing</h4>
+                            <p>Proven understanding of cloud architectures, scalable databases, microservices, containerization, and modern deployment pipelines.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fa-solid fa-gamepad"></i></div>
+                        <div>
+                            <h4>Unity Game Development & C#</h4>
+                            <p>Hands-on development of interactive 2D/3D games in the Unity Engine, featuring custom gameplay physics, state machines, and asset loops.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+                        <div>
+                            <h4>Ecommerce Responsive Web Design</h4>
+                            <p>Creating adaptive, cross-device ecommerce interfaces with clean modern CSS, intuitive navigation, and high performance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-info-card">
+                <div class="card-header-bar">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                    <span class="terminal-title">developer_profile.json</span>
+                </div>
+                <div class="json-code-block">
+                    <pre><code>{
+  <span class="json-key">"name"</span>: <span class="json-str">"{{ profile.full_name }}"</span>,
+  <span class="json-key">"email"</span>: <span class="json-str">"{{ profile.email }}"</span>,
+  <span class="json-key">"phone"</span>: <span class="json-str">"{{ profile.phone }}"</span>,
+  <span class="json-key">"internship"</span>: <span class="json-str">"Thiranex"</span>,
+  <span class="json-key">"education"</span>: [
+    <span class="json-str">"CSE - Easwari Engineering College"</span>,
+    <span class="json-str">"IIT Madras (IITM) BS Degree"</span>,
+    <span class="json-str">"Apex Pon Vidyashram (High School)"</span>
+  ],
+  <span class="json-key">"core_skills"</span>: [
+    <span class="json-str">"Python & Cloud Computing"</span>,
+    <span class="json-str">"Ecommerce Responsive Design"</span>,
+    <span class="json-str">"Unity Game Development (C#)"</span>
+  ],
+  <span class="json-key">"github"</span>: <span class="json-str">"https://github.com/StarShree"</span>,
+  <span class="json-key">"linkedin"</span>: <span class="json-str">"https://www.linkedin.com/in/shriramsss/"</span>
+}</code></pre>
+                </div>
+                <div class="quick-contact-pills">
+                    <div class="pill-item"><i class="fa-solid fa-location-dot"></i> {{ profile.location }}</div>
+                    <div class="pill-item"><i class="fa-solid fa-envelope"></i> <a href="mailto:{{ profile.email }}" style="color: inherit; text-decoration: none;">{{ profile.email }}</a></div>
+                    <div class="pill-item"><i class="fa-solid fa-phone"></i> <a href="tel:{{ profile.phone }}" style="color: inherit; text-decoration: none;">+91 {{ profile.phone }}</a></div>
+                    <div class="pill-item"><i class="fa-brands fa-github"></i> <a href="{{ profile.github_url }}" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">github.com/StarShree</a></div>
+                    <div class="pill-item"><i class="fa-brands fa-linkedin"></i> <a href="{{ profile.linkedin_url }}" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">linkedin.com/in/shriramsss</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== SKILLS SECTION ==================== -->
+<section id="skills" class="section skills-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag"><i class="fa-solid fa-microchip"></i> Capabilities</span>
+            <h2 class="section-title">Technical <span class="gradient-text">Skills</span></h2>
+            <p class="section-subtitle">Proficiencies across Python, Cloud Computing, Unity Game Dev, and Ecommerce Web Design.</p>
+        </div>
+
+        <div class="skills-grid">
+            {% for cat in categories %}
+            <div class="skill-category-card">
+                <div class="cat-header">
+                    <div class="cat-icon-wrapper">
+                        {% if "Python" in cat.name %}
+                        <i class="fa-brands fa-python"></i>
+                        {% elif "Cloud" in cat.name %}
+                        <i class="fa-solid fa-cloud"></i>
+                        {% elif "Unity" in cat.name or "Game" in cat.name %}
+                        <i class="fa-solid fa-gamepad"></i>
+                        {% elif "Database" in cat.name %}
+                        <i class="fa-solid fa-database"></i>
+                        {% else %}
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        {% endif %}
+                    </div>
+                    <h3 class="cat-name">{{ cat.name }}</h3>
+                </div>
+
+                <div class="skills-list">
+                    {% for skill in cat.skills.all %}
+                    <div class="skill-row">
+                        <div class="skill-info">
+                            <span class="skill-name">
+                                {% if skill.icon_class %}
+                                <i class="{{ skill.icon_class }}"></i>
+                                {% endif %}
+                                {{ skill.name }}
+                            </span>
+                            <span class="skill-pct">{{ skill.proficiency }}%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-bar" style="width: {{ skill.proficiency }}%;"></div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ==================== PROJECTS SECTION ==================== -->
+<section id="projects" class="section projects-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag"><i class="fa-solid fa-code-fork"></i> Portfolio</span>
+            <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+            <p class="section-subtitle">Showcasing Ecommerce web applications, Unity game design, and cloud systems.</p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="filter-wrapper">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="fullstack">Full Stack & Ecommerce</button>
+            <button class="filter-btn" data-filter="gamedev">Game Dev (Unity)</button>
+            <button class="filter-btn" data-filter="cloud">Cloud & DevOps</button>
+            <button class="filter-btn" data-filter="backend">Backend & APIs</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid" id="projects-grid">
+            {% for project in projects %}
+            <article class="project-card" data-category="{{ project.category }}">
+                <div class="project-thumb-box">
+                    <img src="{{ project.image_url }}" alt="{{ project.title }}" class="project-thumb" loading="lazy">
+                    <div class="project-category-badge">{{ project.get_category_display }}</div>
+                </div>
+                
+                <div class="project-body">
+                    <h3 class="project-title">{{ project.title }}</h3>
+                    <p class="project-excerpt">{{ project.short_description }}</p>
+
+                    <div class="tech-tags">
+                        {% for tech in project.tech_list %}
+                        <span class="tech-tag">{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+
+                    <div class="project-footer">
+                        <button class="btn-detail" data-project-id="{{ project.id }}" aria-label="View Details for {{ project.title }}">
+                            <span>Details</span> <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                        
+                        <div class="project-links">
+                            {% if project.github_url and project.github_url != '#' %}
+                            <a href="{{ project.github_url }}" target="_blank" rel="noopener" class="icon-btn" title="GitHub Repository">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                            {% endif %}
+                            {% if project.live_demo_url and project.live_demo_url != '#' %}
+                            <a href="{{ project.live_demo_url }}" target="_blank" rel="noopener" class="icon-btn" title="Live Preview">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                            {% endif %}
+                            {% if project.github_url == '#' and project.live_demo_url == '#' %}
+                            <span class="internal-tag"><i class="fa-solid fa-lock"></i> Private</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ==================== EXPERIENCE & EDUCATION ==================== -->
+<section id="experience" class="section experience-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag"><i class="fa-solid fa-route"></i> Career & Academic Path</span>
+            <h2 class="section-title">Experience & <span class="gradient-text">Education</span></h2>
+            <p class="section-subtitle">Hands-on internship at Thiranex, software engineering, and dual higher education.</p>
+        </div>
+
+        <div class="timeline-wrapper">
+            <!-- Work Experience -->
+            <div class="timeline-col">
+                <h3 class="timeline-heading"><i class="fa-solid fa-briefcase"></i> Experience</h3>
+                <div class="timeline-track">
+                    {% for exp in experiences %}
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-card">
+                            <span class="timeline-date">{{ exp.start_date }} — {{ exp.end_date }}</span>
+                            <h4 class="timeline-role">{{ exp.role }}</h4>
+                            <div class="timeline-company">{{ exp.company }} {% if exp.location %}• {{ exp.location }}{% endif %}</div>
+                            <p class="timeline-desc">{{ exp.description }}</p>
+                            {% if exp.technologies %}
+                            <div class="timeline-tech-pill">{{ exp.technologies }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="timeline-col">
+                <h3 class="timeline-heading"><i class="fa-solid fa-graduation-cap"></i> Education</h3>
+                <div class="timeline-track">
+                    {% for edu in educations %}
+                    <div class="timeline-item">
+                        <div class="timeline-marker education-marker"></div>
+                        <div class="timeline-card">
+                            <span class="timeline-date">{{ edu.period }}</span>
+                            <h4 class="timeline-role">{{ edu.degree }}</h4>
+                            <div class="timeline-company">{{ edu.institution }}</div>
+                            {% if edu.grade_or_details %}
+                            <p class="timeline-desc">{{ edu.grade_or_details }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== CONTACT SECTION ==================== -->
+<section id="contact" class="section contact-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag"><i class="fa-regular fa-envelope"></i> Get in Touch</span>
+            <h2 class="section-title">Let's Connect & <span class="gradient-text">Collaborate</span></h2>
+            <p class="section-subtitle">Interested in collaborating on Python, Cloud Computing, Unity Game Dev, or Ecommerce projects? Send a message below.</p>
+        </div>
+
+        <div class="contact-layout">
+            <!-- Contact Info -->
+            <div class="contact-info-panel">
+                <h3 class="panel-heading">Contact Shriram S</h3>
+                <p class="panel-desc">Feel free to reach out directly via email, phone, or LinkedIn. I am always open to discussing new opportunities and projects.</p>
+
+                <div class="contact-details">
+                    <div class="contact-detail-row">
+                        <div class="contact-detail-icon"><i class="fa-solid fa-envelope"></i></div>
+                        <div>
+                            <span class="detail-label">Email</span>
+                            <a href="mailto:{{ profile.email }}" class="detail-value">{{ profile.email }}</a>
+                        </div>
+                    </div>
+
+                    {% if profile.phone %}
+                    <div class="contact-detail-row">
+                        <div class="contact-detail-icon"><i class="fa-solid fa-phone"></i></div>
+                        <div>
+                            <span class="detail-label">Phone</span>
+                            <a href="tel:{{ profile.phone }}" class="detail-value">+91 {{ profile.phone }}</a>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <div class="contact-detail-row">
+                        <div class="contact-detail-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div>
+                            <span class="detail-label">Location</span>
+                            <span class="detail-value">{{ profile.location }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Highlights Card -->
+                <div class="highlights-box">
+                    <div class="highlights-header">
+                        <i class="fa-solid fa-code-commit"></i>
+                        <h4>Professional Highlights</h4>
+                    </div>
+                    <ul class="highlights-list">
+                        <li><strong>Internship:</strong> Intern at Thiranex</li>
+                        <li><strong>Core Stack:</strong> Python, Cloud Computing, Unity (C#), Ecommerce Web</li>
+                        <li><strong>College:</strong> CSE @ Easwari Engineering College</li>
+                        <li><strong>Degree:</strong> BS Degree @ IIT Madras (IITM)</li>
+                        <li><strong>Schooling:</strong> Apex Pon Vidyashram</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-panel">
+                <form id="contact-form" action="{% url 'portfolio:contact_submit' %}" method="POST" class="styled-form">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contact-name">Your Name <span class="required">*</span></label>
+                            <input type="text" id="contact-name" name="name" class="form-input" placeholder="e.g. Alex Hunter" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Your Email <span class="required">*</span></label>
+                            <input type="email" id="contact-email" name="email" class="form-input" placeholder="name@company.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-subject">Subject</label>
+                        <input type="text" id="contact-subject" name="subject" class="form-input" placeholder="Collaboration / Project Inquiry">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-message">Message <span class="required">*</span></label>
+                        <textarea id="contact-message" name="message" rows="5" class="form-textarea" placeholder="Write your message here..." required></textarea>
+                    </div>
+
+                    <button type="submit" id="contact-submit-btn" class="btn btn-primary btn-submit">
+                        <span class="btn-text"><i class="fa-regular fa-paper-plane"></i> Send Message</span>
+                        <span class="spinner-inline hidden"><i class="fa-solid fa-spinner fa-spin"></i> Submitting...</span>
+                    </button>
+                    <p class="form-disclaimer">Messages are delivered directly to Shriram S.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== PROJECT DETAIL MODAL ==================== -->
+<div id="project-modal" class="modal-backdrop" aria-hidden="true">
+    <div class="modal-dialog">
+        <button class="modal-close" id="modal-close" aria-label="Close dialog">&times;</button>
+        <div class="modal-content" id="modal-body">
+            <!-- Dynamically populated via JavaScript -->
+            <div class="modal-loading"><i class="fa-solid fa-spinner fa-spin"></i> Loading project details...</div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
