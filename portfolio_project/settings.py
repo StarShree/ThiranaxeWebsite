@@ -20,7 +20,11 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-default-dev-key-change-in-
 DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 't')
 
 ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ["https://*.run.app"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.run.app",
+    "https://*.netlify.app",
+    "http://*.netlify.app",
+]
 
 # Application definition
 INSTALLED_APPS = [
@@ -79,9 +83,11 @@ DATABASES = {
             else '34.100.184.249'
         ),
         'PORT': os.environ.get('DB_PORT', '3306'),
+        'CONN_MAX_AGE': int(os.environ.get('CONN_MAX_AGE', '0')),
         'OPTIONS': {
             'charset': 'utf8mb4',
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            'connect_timeout': 10,
         }
     }
 }
@@ -113,7 +119,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'portfolio' / 'static',
 ]
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = BASE_DIR / os.environ.get('STATIC_ROOT_DIR', 'public/static')
 
 # Media files
 MEDIA_URL = '/media/'

@@ -1,0 +1,25 @@
+[build]
+  command = "python -m pip install --upgrade pip && pip install -r requirements.txt && python manage.py collectstatic --noinput"
+  functions = "netlify/functions"
+  publish = "public"
+
+[build.environment]
+  PYTHON_VERSION = "3.11"
+
+[functions]
+  included_files = [
+    "portfolio/**",
+    "portfolio_project/**"
+  ]
+
+# Serve collected static files directly from the CDN
+[[redirects]]
+  from = "/static/*"
+  to = "/static/:splat"
+  status = 200
+
+# Route all application routes to Django via serverless WSGI
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/api"
+  status = 200

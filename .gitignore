@@ -15,7 +15,8 @@ __pycache__/
 .env.local
 
 # Django Static / Media
-static_root/
+staticfiles/
+public/
 media/
 
 # IDE
